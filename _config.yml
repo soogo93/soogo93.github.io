@@ -1,31 +1,121 @@
-name: 하승수 블로그
-author: Herring Cove
-baseurl:
-description: 하승수
-github: https://github.com/soogo93
-twitter: http://www.twitter.com/
-facebook: http://www.facebook.com
-linkedin: http://www.linkedin.com
-email: haseungsoo12@gmail.com
-location: 42°2'16"N   70°12'47"W
-disqus: seungsooha
+safe: false
+port: 4000
+highlighter: rouge
+future: false
+timezone: Europe/London
+lsi: false
+markdown: kramdown
 
-##Make sure to edit the above fields, especially for disqus.
+source: src
+destination: build
 
+permalink: /:categories/:year/:month/:title
+name: Daniel Groves Photography
+description: 'Photographer, Adventurer, and Developer who is addicted to the mountains.'
+email: 'hello@danielgroves.net'
+url: 'https://danielgroves.net'
 
-highlighter: pygments
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
+opengraph:
+  page: https://www.facebook.com/danielsgroves
+  personal: https://www.facebook.com/profile.php?id=1530170880
+  image: /assets/camera-roll/2015/04/20150411-DSC_5263-Edit.jpg
+
+static_path: https://d1238u3jnb0njy.cloudfront.net
+styles_path: https://d1238u3jnb0njy.cloudfront.net
+scripts_path: https://d1238u3jnb0njy.cloudfront.net
+
+imgix:
+  main_images: https://danielgroves-net.imgix.net/
+  metadata_images: https://danielgroves-net-2.imgix.net/
+
+jekyll-archives:
+  layouts:
+    tag: tag
+  enabled:
+    - tags
+  permalinks:
+    tag: /tag/:name/
+
+pagination:
+  limit: false
+  per_page: 12
+  permalink: /:num/index.html
+
+exclude:
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - readme.md
+  - .gitlab-ci.yml
+  - .gitignore
+  - vendor
+  - Procile
+  - config.ru
+
+kramdown:
+  parse_span_html: false
+  parse_block_html: false
+
+gems:
+  - bourbon
+  - neat
+  - jekyll-assets
+  - jekyll-archives
+  - jekyll-sitemap
+  - rouge
+  - jekyll-redirect-from
+  - octopress-paginate
+
+assets:
+  sources:
+    - _scripts
+    - _styles
+  js_compressor: yui
+  css_compressor: yui
+  debug: false
+  baseurl: https://d1238u3jnb0njy.cloudfront.net
 
 defaults:
   - scope:
-      path: ""
-      type: "pages"
+      path: ''
     values:
-      layout: "default"
+      footer_related_posts: true
+      comments: false
+
   - scope:
-      path: ""
-      type: "posts"
+      path: ''
+      type: 'pages'
     values:
-      layout: "post"
+      layout: 'stark'
+      is_page: true
+      is_post: false
+
+  - scope:
+      path: ''
+      type: 'posts'
+    values:
+      layout: 'default'
+      banner_position: 'middle'
+      is_page: false
+      is_post: true
+
+mapbox:
+  options:
+    zoompan: true
+    zoomwheel: false
+    geocoder: false
+    link: false
+  id_prefix: danielsgroves.
+  access_token: pk.eyJ1IjoiZGFuaWVsc2dyb3ZlcyIsImEiOiJwSlNBVXcwIn0._PdzYUw29IfgzxbOFul2kg
+
+series:
+  jogle:
+    title: "John O' Groats to Lands End"
+    description: "A tale from cycling the length of Britain - the long way"
+    footer: false
+    complete: true
+  eurovelo:
+    title: "Eurovelo"
+    description: "A charity cycle expedition across Europe"
+    footer: true
+    complete: false
