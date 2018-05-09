@@ -1,14 +1,14 @@
-name: Herring Cove
+name: 하승수 블로그
 author: Herring Cove
 baseurl:
-description: theme for jekyll
-github: http://www.github.com/arnp
+description: 하승수
+github: https://github.com/soogo93
 twitter: http://www.twitter.com/
 facebook: http://www.facebook.com
 linkedin: http://www.linkedin.com
-email: rnpatel[at]me.com
+email: haseungsoo12@gmail.com
 location: 42°2'16"N   70°12'47"W
-disqus: diqus-username
+disqus: seungsooha
 
 ##Make sure to edit the above fields, especially for disqus.
 
