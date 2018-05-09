@@ -1,2 +1,0 @@
-//= require navigation
-//= require imgix

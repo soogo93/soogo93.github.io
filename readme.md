@@ -1,64 +1,47 @@
-# danielgroves.net Source
+# *folio
+A simple theme for showcasing your work, emphasis on whitespace, transparency, and helvetica. 
 
-This is the source code for my personal website, [danielgroves.net][]
 
-## Usage
+<a href="http://liabogoev.com/-folio">Live Demo</a>
 
-Setting up and using the site is pretty easy. Make sure you have Ruby installed, and the bundler gem, then install the required gems.
+<hr/>
 
-```bash
-gem install bundler
-bundle install
-```
 
-Then run using rake : `bundle exec rake dev:watch`
+## Features
 
-Then simply go to [localhost:4000][localhost] in your browser.
+### Collections
+This Jekyll theme implements collections to let you break up your work into categories. The example is divided into poetry and portfolio, but easily revamp this into recipes, apps, short stories, limmericks, whatever your creative work is. 
+> To do this, edit the collections in the config file, create a corresponding folder, and update the portfolio and poetry source files. 
 
-### Rake Tasks
+Three different layouts are included—the poetry layout, for a simple list of entries, the blog layout (index.html), for more detailed descriptive list of entries, and the portfolio layout. The portfolio layout overlays a descriptive hoverover on a background image. If no image is provided, the square is auto-filled with the chosen theme color. Thumbnail sizing is not necessary, as the grid crops images perfectly. 
 
-Other rake tasks are:
-* `version` - Jekyll version number.
-* `dev:watch` - Start the Jekyll server in watch mode with future and draft posts. Loads the `_config_dev.yml` file to override production values with development values.
-* `dev:build` - Builds the site with the default options. Loads the `_config_dev.yml` file to override production values with development values.
-* `deploy` - Do a production build.
-* `typekit:add_domain` - Adds a domain to a typekit kit whitelist based on your environment.
-* `typekit:remove_domain` - Removes a domain from a typekit kit whitelist based on your environment.
-* `assets:precompile` - Default task called by the build pipeline. See below for details.
+### Portfolio Specifics
+You can easily add full pages for each of the projects in your portfolio. If you want one to link to an external website, create a file for it in _portfolio, and  fil in the YAML front matter as you would for another, but with a redirect, like so: 
 
-#### Typekit Tasks
+	---
+	layout: post
+	title: Project
+	description: a project that redirects to another website
+	img:
+	redirect: https://otherpage.com
+	--- 
 
-The Rake tasks in the `typekit` namespace are used by Heroku as [postdeploy][heroku_postdeploy] and [pr-predestroy][heroku_predestroy] scripts. This allows Heroku to automatically add and remove [Review App][heroku_review] domains from the Typekit kit whitelist. This is achieved by calling into the Typekit API to add and remove the domains. Three environmental variables are required:
+### Theming
+Six beautiful theme colors have been selected to choose from. The default is red, but quickly change it by editing the _base.scss file in line 40. The color variable are listed there, as well. 
 
-* `TYPEKIT_API_AUTH` - This should be a valid [Typekit API Key][typekit_api_key].
-* `TYPEKIT_KIT_ID` - The ID of the kit you want to update (this is supplied on the settings page for the kit).
-* `HEROKU_APP_NAME` - This is automatically supplied by Heroku, and is used to build the app domain.
+### Photos
+Photo formatting is made simple using rows of a 3-column system. Make photos 1/3, 2/3, or full width. Easily create beautiful grids within your blog posts and projects pages. 
 
-When these three variables are present the Rake tasks can be invoked.
+### Code Highlighting
+This theme implements Jekyll's built in code syntax highlighting with Pygments. Just use a liquid tag to delineate your code: 
+{% highlight python %}
+	code code code
+{% endhighlight %}
 
-### Deployment
 
-Deployment is completely automated, and happens via a [Heroku pipeline][heroku_pipeline]. Anything that goes to the `master` branch is automatically deployed to staging. I use [Heroku Review Apps][heroku_review] to automatically stage branches to help with gaining feedback from friends, family, and colleagues.
-
-The [Heroku Ruby Buildpack][heroku_buildpack] automatically runs the Rake task `assets:precompile`, so to minimise my personal technical debt I utilise this default behaviour to build the site.
-
-## Licensing
-
-The content and design have been bundled into one license and the code has been bundled into a second. Check below for details.
-
-### The Content and Design
-
-The content and design are licensed under [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/ "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License"). Essentially, this allows you to share content and to adapt (or build upon) my works, but not for commercial purposes and only if you share attribution and under the same license agreement.
-
-### Photographs
-
-The photographs used on this site are licensed under [CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/ "Create Commons Attribution-NonCommercial-NoDerivatives 4.0 International License"). Essentially this means that you cannot share any of this material for commercial purposes without prior permission, but you may share for non-commercial purposes with attribution as long as it has not been modified.
-
-### The Code
-
-The code is licensed under [MIT](http://opensource.org/licenses/MIT "MIT License Agreement"), therefore the following applies:
-
-Copyright (c) 2013 Daniel Groves
+<hr/>
+The MIT License (MIT)
+Copyright (c) 2015 Lia Bogoev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -66,11 +49,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[danielgroves.net]: https://danielgroves.net
-[localhost]: http://localhost:4000
-[heroku_review]:  https://devcenter.heroku.com/articles/github-integration-review-apps
-[heroku_buildpack]: https://github.com/heroku/heroku-buildpack-ruby
-[heroku_postdeploy]: https://devcenter.heroku.com/articles/github-integration-review-apps#the-postdeploy-script
-[heroku_predestroy]: https://devcenter.heroku.com/articles/github-integration-review-apps#pr-predestroy-script
-[heroku_pipeline]: https://devcenter.heroku.com/articles/pipelines
-[typekit_api_key]: https://typekit.com/account/tokens

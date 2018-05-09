@@ -1,121 +1,29 @@
-safe: false
-port: 4000
-highlighter: rouge
-future: false
-timezone: Europe/London
-lsi: false
+# Site settings
+title: *folio
+email: you@example.com
+description: > # this means to ignore newlines until "baseurl:"
+  A simple, whitespace, helvetica based portfolio theme.
+baseurl:  # the subpath of your site, e.g. /blog/
+url:  # the base hostname & protocol for your site
+twitter_username: twitter_username
+github_username:  github_username
+
+# Build settings
 markdown: kramdown
 
-source: src
-destination: build
+highlighter: rouge
 
-permalink: /:categories/:year/:month/:title
-name: Daniel Groves Photography
-description: 'Photographer, Adventurer, and Developer who is addicted to the mountains.'
-email: 'hello@danielgroves.net'
-url: 'https://danielgroves.net'
+# Pagination
+paginate: 15
+paginate_path: "/blog/page:num/"
 
-opengraph:
-  page: https://www.facebook.com/danielsgroves
-  personal: https://www.facebook.com/profile.php?id=1530170880
-  image: /assets/camera-roll/2015/04/20150411-DSC_5263-Edit.jpg
 
-static_path: https://d1238u3jnb0njy.cloudfront.net
-styles_path: https://d1238u3jnb0njy.cloudfront.net
-scripts_path: https://d1238u3jnb0njy.cloudfront.net
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+  poetry:
+    output: true
+    permalink: /poetry/:path/
 
-imgix:
-  main_images: https://danielgroves-net.imgix.net/
-  metadata_images: https://danielgroves-net-2.imgix.net/
 
-jekyll-archives:
-  layouts:
-    tag: tag
-  enabled:
-    - tags
-  permalinks:
-    tag: /tag/:name/
-
-pagination:
-  limit: false
-  per_page: 12
-  permalink: /:num/index.html
-
-exclude:
-  - Rakefile
-  - Gemfile
-  - Gemfile.lock
-  - readme.md
-  - .gitlab-ci.yml
-  - .gitignore
-  - vendor
-  - Procile
-  - config.ru
-
-kramdown:
-  parse_span_html: false
-  parse_block_html: false
-
-gems:
-  - bourbon
-  - neat
-  - jekyll-assets
-  - jekyll-archives
-  - jekyll-sitemap
-  - rouge
-  - jekyll-redirect-from
-  - octopress-paginate
-
-assets:
-  sources:
-    - _scripts
-    - _styles
-  js_compressor: yui
-  css_compressor: yui
-  debug: false
-  baseurl: https://d1238u3jnb0njy.cloudfront.net
-
-defaults:
-  - scope:
-      path: ''
-    values:
-      footer_related_posts: true
-      comments: false
-
-  - scope:
-      path: ''
-      type: 'pages'
-    values:
-      layout: 'stark'
-      is_page: true
-      is_post: false
-
-  - scope:
-      path: ''
-      type: 'posts'
-    values:
-      layout: 'default'
-      banner_position: 'middle'
-      is_page: false
-      is_post: true
-
-mapbox:
-  options:
-    zoompan: true
-    zoomwheel: false
-    geocoder: false
-    link: false
-  id_prefix: danielsgroves.
-  access_token: pk.eyJ1IjoiZGFuaWVsc2dyb3ZlcyIsImEiOiJwSlNBVXcwIn0._PdzYUw29IfgzxbOFul2kg
-
-series:
-  jogle:
-    title: "John O' Groats to Lands End"
-    description: "A tale from cycling the length of Britain - the long way"
-    footer: false
-    complete: true
-  eurovelo:
-    title: "Eurovelo"
-    description: "A charity cycle expedition across Europe"
-    footer: true
-    complete: false
